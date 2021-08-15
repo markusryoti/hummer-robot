@@ -1,16 +1,15 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
+#define BLINK_RATE 100
+
 int main()
 {
-	DDRB |= (1 << DDB5);
+	DDRD |= (1 << DDD7);
 
 	while (1)
 	{
-		PORTB |= (1 << PORTB5);
-		_delay_ms(250);
-
-		PORTB &= ~(1 << PORTB5);
-		_delay_ms(250);
+		PORTD ^= (1 << PORTD7);
+		_delay_ms(BLINK_RATE);
 	}
 }
