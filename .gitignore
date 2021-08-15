@@ -2,3 +2,4 @@
 *.hex
 *.bin
 .vscode/
+project_docs

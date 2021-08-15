@@ -7,6 +7,7 @@
 
 void init()
 {
+	// Enable Arduino pin 7 (328p PD7)
 	DDRD |= (1 << DDD7);
 }
 
@@ -18,6 +19,7 @@ void serial_send(uint8_t data)
 
 void blink_led()
 {
+	// Set led on for small amount of time and then set off
 	PORTD |= (1 << PORTD7);
 	_delay_ms(10);
 	PORTD &= ~(1 << PORTD7);
@@ -25,8 +27,8 @@ void blink_led()
 
 int main()
 {
-	uint8_t data = 'A';
-	uint8_t start[] = "Program start\n";
+	uint8_t data;
+	uint8_t start[] = "Serial initialized. ";
 	uart_init(9600, 0);
 
 	sei(); // enable global interrupts
