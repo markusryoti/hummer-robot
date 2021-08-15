@@ -9,4 +9,4 @@ sudo apt install avr-libc avrdude binutils-avr gcc-avr
 ## Project TODO
 
 - [x] Enable serial communication (to send move commands from keyboard)
-- [] Control motors with their control board (L298)
+- [ ] Control motors with their control board (L298)
