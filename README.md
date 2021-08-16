@@ -4,7 +4,7 @@ This project will hopefully some day develop to a functioning 4 wheel robot
 
 ## Install dependencies for project
 
-sudo apt install avr-libc avrdude binutils-avr gcc-avr
+`sudo apt install avr-libc avrdude binutils-avr gcc-avr`
 
 ## Project TODO
 

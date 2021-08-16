@@ -1,9 +1,11 @@
 #include <stdint.h>
+#include <ctype.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
 
 #include "serial.h"
+#include "motor_controller.h"
 
 void init()
 {
@@ -25,6 +27,24 @@ void blink_led()
 	PORTD &= ~(1 << PORTD7);
 }
 
+void handle_keypress(uint8_t key)
+{
+	switch (tolower(key))
+	{
+	case 'w':
+		move_forward();
+		break;
+	case 's':
+		break;
+	case 'd':
+		break;
+	case 'a':
+		break;
+	default:
+		break;
+	}
+}
+
 int main()
 {
 	uint8_t data;
@@ -40,10 +60,13 @@ int main()
 		if (uart_read_count() > 0)
 		{
 			data = uart_read();
-			uart_send_byte(data);
 
-			// Do whatever action with the new data
+			// log key to serial
+			uart_send_byte(data);
+			// blink led to signal
 			blink_led();
+			//control motors
+			handle_keypress(data);
 		}
 	}
 }
